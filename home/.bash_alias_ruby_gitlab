@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+# vim: ft=sh noet:
+
+gitlab ()
+{
+    docker run -it \
+        -v "${HOME}/.home_docker:/root" \
+        -w /root \
+		-e "GITLAB_API_PRIVATE_TOKEN=${GITLAB_API_PRIVATE_TOKEN:-}" \
+		-e "GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT:-}" \
+        "augustohp/ruby-gitlab-cli:latest" \
+		"$@"
+}
