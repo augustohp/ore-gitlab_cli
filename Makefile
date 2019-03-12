@@ -1,5 +1,5 @@
 RUBY_VERSION=2.5.1
-RUBY_GITLAB_VERSION=4.4.0
+RUBY_GITLAB_VERSION=4.10.0
 
 default:
 	@echo "Available targets are:"
@@ -8,9 +8,9 @@ default:
 
 build:
 	docker pull ruby:${RUBY_VERSION}
-	docker build -t "augustohp/ruby-gitlab-cli:${RUBY_GITLAB_VERSION}" -t "augustohp/ruby-gitlab-cli:latest" .
+	docker build -t "augustohp/ore-gitlab-cli:${RUBY_GITLAB_VERSION}" -t "augustohp/ore-gitlab-cli:latest" .
 
 push:	
-	docker push "augustohp/ruby-gitlab-cli"	
+	docker push "augustohp/ore-gitlab-cli"	
 
 .PHONY: build push

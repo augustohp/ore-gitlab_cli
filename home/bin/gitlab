@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Substitutes `php` binary for one executed inside a Docker container.
+#
+# Author: Augusto Pascutti <augusto.hp@gmail.com>
+# vim: ft=sh noet:
+
+# Configuration
+ORE_IMAGE="augustohp/ore-gitlab-cli"
+ORE_VERSION="latest"
+ORE_HOME=${ORE_HOME:-$HOME/.ore-home}
+GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT:-"https://gitlab.com/api/v4"}
+GITLAB_API_PRIVATE_TOKEN=${GITLAB_API_PRIVATE_TOKEN:-""}
+
+# Dependencies
+DOCKER=$(which docker 2> /dev/null)
+
+# Sanity checks
+test -z "$DOCKER" && { echo "Error: Docker not installed." >&2; exit 2; }
+test -d "${ORE_HOME}" || { mkdir -p "${ORE_HOME}"; }
+
+docker run -it \
+	-v "${ORE_HOME}:/home/ruby" \
+	-e "GITLAB_API_PRIVATE_TOKEN=${GITLAB_API_PRIVATE_TOKEN:-}" \
+	-e "GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT:-}" \
+	"${ORE_IMAGE}:${ORE_VERSION}" \
+	"$@"
