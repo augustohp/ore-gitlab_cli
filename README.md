@@ -37,7 +37,7 @@ Some recipes for you to use:
 
 * Trim alias (used in some examples): `alias trim="sed 's/[\s\t\"]//g'"`
 * List all *clone URLs* of projects the authenticated user has access to
-    `$ gitlab projects --json | jq '.result[] | .ssh_url_to_repo' | trim'`
+    `$ gitlab projects --json | jq '.result[] | .ssh_url_to_repo' | trim`
 * List all repositories from an organization (limited to 250 max)
     `$ gitlab group_projects --json gitlab-org "{per_page: '250'}" | jq '.result[] | .path_with_namespace' | trim`
 
