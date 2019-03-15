@@ -20,6 +20,7 @@ test -z "$DOCKER" && { echo "Error: Docker not installed." >&2; exit 2; }
 test -d "${ORE_HOME}" || { mkdir -p "${ORE_HOME}"; }
 
 docker run -it \
+    --rm \
 	-v "${ORE_HOME}:/home/ruby" \
 	-e "GITLAB_API_PRIVATE_TOKEN=${GITLAB_API_PRIVATE_TOKEN:-}" \
 	-e "GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT:-}" \
