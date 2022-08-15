@@ -1,14 +1,14 @@
 #!/bin/sh
 #
-# Substitutes `php` binary for one executed inside a Docker container.
+# Exposes Gitlab API's through a simple shell script, using Docker.
 #
 # Author: Augusto Pascutti <augusto.hp@gmail.com>
 # vim: ft=sh noet:
 
 # Configuration
-ORE_IMAGE="augustohp/ore-gitlab-cli"
+ORE_IMAGE="augustohp/gitlab-cli"
 ORE_VERSION="latest"
-ORE_HOME=${ORE_HOME:-$HOME/.ore-home}
+ORE_HOME=${ORE_HOME:-$HOME/.ore/gitlab-cli}
 GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT:-"https://gitlab.com/api/v4"}
 GITLAB_API_PRIVATE_TOKEN=${GITLAB_API_PRIVATE_TOKEN:-""}
 
